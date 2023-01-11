@@ -14,6 +14,7 @@ const Home = () => {
 		e.preventDefault()// detenemos el comportamiento predeterminado para procesar nuestro codigo
 	
 		setTodos(todos.concat(notas));
+		setNotas("");
 		// console.log(notas);
 		// console.log(todos);
 	}
@@ -23,12 +24,13 @@ const Home = () => {
 		nuevaLista.splice(index, 1);
 		setTodos(nuevaLista);
 	}
-	// const[itemLeft,setItemLeft] = useState([]);
-
-	// const itemCounter = (index) => {
-	// 	setItemLeft(itemLeft.concat(todos.length));
+	
+	// const noHayTarea = () => {
+	// 	if(todos.length = 0) {
+	// 		return ("No hay tareas, añadir tareas");
+	// 	}
 	// }
-	// console.log(itemLeft);
+
 	
 
 //create your first component
@@ -38,14 +40,14 @@ const Home = () => {
   <div className="mb-3">
     <h1 className="fw-bolder">to do list</h1>
     {/*2. definimos el evento ochange en el input */}
-	<input type="text" className="form-control" id="input" aria-describedby="emailHelp" onChange={(e)=>{setNotas(e.target.value)}} />
+	<input type="text" className="form-control" id="input" value={notas} aria-describedby="emailHelp" onChange={(e)=>{setNotas(e.target.value)}} />
   </div>
 
 </form>
 <div className="container" id="lista">
 	<ul className="list-group m-3">
 	{todos.map((term, index) => (
-            <li className="list-group-item" key={index} value={term}>{term}
+            <li className="list-group-item" key={index}>{term}
 			<button type="button" className="btn-close float-end" aria-label="Close" onClick={()=>remover(index)}
 			></button>
 			</li>
